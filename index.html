@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0f12">
+  <meta name="description" content="FitFuel Daily V3 — local-first fitness operating system for nutrition, training, recovery, planning and progress.">
+  <title>FitFuel Daily V3</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="appShell" class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-block">
+        <img src="assets/icon.svg" class="brand-icon" alt="FitFuel Daily">
+        <div>
+          <div class="brand-name">FitFuel <span>Daily</span></div>
+          <div class="brand-sub">OPERATING OS</div>
+        </div>
+      </div>
+      <div class="nav-label">SYSTEM NAVIGATION</div>
+      <nav id="desktopNav" class="nav-list" aria-label="Primary navigation">
+        <button class="nav-item active" data-nav="dashboard"><span class="mi">dashboard</span><span>Dashboard</span></button>
+        <button class="nav-item" data-nav="nutrition"><span class="mi">restaurant</span><span>Nutrition</span><span id="navProteinGap" class="nav-badge">42g left</span></button>
+        <button class="nav-item" data-nav="workouts"><span class="mi">fitness_center</span><span>Workouts</span><span class="nav-badge success">Today</span></button>
+        <button class="nav-item" data-nav="library"><span class="mi">menu_book</span><span>Exercise Library</span></button>
+        <button class="nav-item" data-nav="progress"><span class="mi">trending_up</span><span>Progress</span></button>
+        <button class="nav-item" data-nav="recovery"><span class="mi">bedtime</span><span>Recovery</span><span id="navRecovery" class="nav-badge lime">82%</span></button>
+        <button class="nav-item" data-nav="planner"><span class="mi">calendar_today</span><span>Planner</span></button>
+        <button class="nav-item" data-nav="reports"><span class="mi">description</span><span>Reports</span></button>
+        <button class="nav-item" data-nav="settings"><span class="mi">settings</span><span>Settings</span></button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="streak-box">
+          <div class="streak-left"><span class="flame">🔥</span><div><b>STREAK</b><small id="streakText">14-day target met</small></div></div>
+          <strong id="streakValue">14d</strong>
+        </div>
+        <div class="telemetry-line"><span class="live-dot"></span><span>TELEMETRY LIVE</span><strong>LOCAL</strong></div>
+      </div>
+    </aside>
+
+    <div class="main-wrap">
+      <header class="topbar">
+        <div class="top-left">
+          <button class="icon-btn mobile-only" data-action="toggleSidebar" aria-label="Open navigation"><span class="mi">menu</span></button>
+          <div class="date-time"><b id="headerDate">Thursday, Oct 24</b><span id="headerTime">07:45 AM</span></div>
+          <div class="status-pill"><span class="live-dot"></span> STRAIN READY</div>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" data-action="voiceQuickAdd" aria-label="Voice quick add"><span class="mi">mic</span></button>
+          <button class="icon-btn" data-action="toggleTheme" aria-label="Toggle theme"><span class="mi" id="themeIcon">dark_mode</span></button>
+          <button class="secondary-btn" data-action="quickAdd"><span class="mi">add</span> Quick Add <span class="mi small">expand_more</span></button>
+          <button class="primary-btn" data-action="startWorkout"><span class="mi">bolt</span> Start Workout</button>
+          <button class="profile-chip" data-action="openProfile">
+            <span id="profileAvatar" class="avatar">MV</span>
+            <span><b id="profileNameTop">Marcus Vance</b><small id="profileStatusTop">OPTIMUM STATUS</small></span>
+            <em>PRO</em>
+          </button>
+        </div>
+      </header>
+
+      <main id="mainContent" class="main-content" tabindex="-1">
+        <!-- DASHBOARD -->
+        <section class="view active" id="view-dashboard" data-view="dashboard"></section>
+
+        <!-- NUTRITION -->
+        <section class="view" id="view-nutrition" data-view="nutrition"></section>
+
+        <!-- WORKOUTS -->
+        <section class="view" id="view-workouts" data-view="workouts"></section>
+
+        <!-- LIBRARY -->
+        <section class="view" id="view-library" data-view="library"></section>
+
+        <!-- PROGRESS -->
+        <section class="view" id="view-progress" data-view="progress"></section>
+
+        <!-- RECOVERY -->
+        <section class="view" id="view-recovery" data-view="recovery"></section>
+
+        <!-- PLANNER -->
+        <section class="view" id="view-planner" data-view="planner"></section>
+
+        <!-- REPORTS -->
+        <section class="view" id="view-reports" data-view="reports"></section>
+
+        <!-- SETTINGS -->
+        <section class="view" id="view-settings" data-view="settings"></section>
+      </main>
+    </div>
+  </div>
+
+  <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
+    <button data-nav="dashboard"><span class="mi">dashboard</span><small>Home</small></button>
+    <button data-nav="nutrition"><span class="mi">restaurant</span><small>Food</small></button>
+    <button class="mobile-main-action" data-action="startWorkout"><span class="mi">bolt</span><small>Train</small></button>
+    <button data-nav="workouts"><span class="mi">fitness_center</span><small>Workout</small></button>
+    <button data-action="quickAdd"><span class="mi">add_circle</span><small>Add</small></button>
+  </nav>
+
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="restoreFile" accept="application/json" hidden>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
